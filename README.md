@@ -298,3 +298,4 @@ Au premier lancement, ces données sont insérées automatiquement :
 **Réinitialiser la base de données**
 - Supprimer le fichier `src/AeroManag.Api/aeromanag.db`
 - Relancer `dotnet run` — la base est recréée avec les données de démo
+# web-aeromanag
