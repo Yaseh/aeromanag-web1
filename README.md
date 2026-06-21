@@ -50,45 +50,12 @@ ng version
 
 ## Lancement du projet
 
-### Option recommandée — script de lancement unique (un seul terminal)
-
-**Windows (PowerShell) :**
-
-```powershell
-.\start-projet.ps1
-```
-
-**macOS / Linux :**
-
-```bash
-chmod +x start-projet.sh
-./start-projet.sh
-```
-
-Le script :
-1. Démarre le backend en arrière-plan
-2. Attend que l'API réponde sur `http://localhost:5176`
-3. Affiche les URLs utiles, puis lance le frontend au premier plan
-4. **Ctrl+C** arrête proprement les deux processus
-
-URLs après démarrage :
-- API (Swagger) : `http://localhost:5176/swagger`
-- Frontend : `http://localhost:4200`
-
-Au **premier lancement**, la base `aeromanag.db` est créée automatiquement avec le schéma et les données de démonstration.
-
----
-
-### Option alternative — deux terminaux séparés
-
-<details>
-<summary>Méthode manuelle (si le script ne fonctionne pas)</summary>
+Ouvrir **deux terminaux** depuis la racine du projet.
 
 **Terminal 1 — Backend (API)**
 
 ```bash
 cd src/AeroManag.Api
-dotnet restore
 dotnet run
 ```
 
@@ -103,13 +70,16 @@ Application started.
 
 ```bash
 cd aeromanag-frontend
-npm install
 ng serve
 ```
 
 Puis ouvrir : `http://localhost:4200`
 
-</details>
+URLs utiles :
+- Frontend : `http://localhost:4200`
+- API (Swagger) : `http://localhost:5176/swagger`
+
+Au **premier lancement**, la base `aeromanag.db` est créée automatiquement avec le schéma et les données de démonstration.
 
 ---
 
@@ -121,8 +91,6 @@ Aero-manageweb/
 ├── AeroManag.slnx                   ← fichier solution Visual Studio
 ├── README.md
 ├── .gitignore
-├── start-projet.ps1                 ← script de lancement unique (Windows)
-├── start-projet.sh                  ← script de lancement unique (macOS/Linux)
 │
 ├── src/
 │   ├── AeroManag.Core/              ← couche métier (aucune dépendance externe)
@@ -284,8 +252,7 @@ Au premier lancement, ces données sont insérées automatiquement :
 
 **Le backend ne démarre pas**
 - Vérifier que .NET 10 est installé : `dotnet --version`
-- Avec le script : relancer `.\start-projet.ps1` depuis la racine du projet
-- En méthode manuelle : s'assurer d'être dans `src/AeroManag.Api` avant `dotnet run`
+- S'assurer d'être dans `src/AeroManag.Api` avant `dotnet run`
 
 **Le frontend n'affiche pas les données**
 - Vérifier que le backend tourne bien (Swagger accessible sur `http://localhost:5176/swagger`)
@@ -298,4 +265,5 @@ Au premier lancement, ces données sont insérées automatiquement :
 **Réinitialiser la base de données**
 - Supprimer le fichier `src/AeroManag.Api/aeromanag.db`
 - Relancer `dotnet run` — la base est recréée avec les données de démo
-# web-aeromanag
+ 
+ 
