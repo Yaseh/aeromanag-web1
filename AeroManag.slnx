@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/AeroManag.Api/AeroManag.Api.csproj" />
+    <Project Path="src/AeroManag.Core/AeroManag.Core.csproj" />
+    <Project Path="src/AeroManag.Infrastructure/AeroManag.Infrastructure.csproj" />
+  </Folder>
+</Solution>

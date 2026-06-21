@@ -1,0 +1,33 @@
+<h2>Vols</h2>
+<a routerLink="/vols/nouveau">+ Nouveau vol</a>
+<table>
+  <thead>
+    <tr>
+      <th>Numero</th>
+      <th>Depart</th>
+      <th>Arrivee</th>
+      <th>Statut</th>
+      <th>Avion</th>
+      <th>Commandant</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (v of service.vols(); track v.idVol) {
+      <tr>
+        <td>{{ v.numeroVol }}</td>
+        <td>{{ v.aeroportDepartCode }} - {{ v.dateDepart }}</td>
+        <td>{{ v.aeroportArriveeCode }} - {{ v.dateArrivee }}</td>
+        <td>{{ v.statut }}</td>
+        <td>{{ v.avionModele }}</td>
+        <td>{{ v.commandantNom }} {{ v.commandantPrenom }}</td>
+        <td>
+          <a [routerLink]="['/vols', v.idVol, 'modifier']">Modifier</a>
+          <button (click)="supprimer(v.idVol)">Supprimer</button>
+        </td>
+      </tr>
+    } @empty {
+      <tr><td colspan="7">Aucun vol.</td></tr>
+    }
+  </tbody>
+</table>

@@ -1,0 +1,29 @@
+<h2>Aeroports</h2>
+<a routerLink="/aeroports/nouveau">+ Nouvel aeroport</a>
+<table>
+  <thead>
+    <tr>
+      <th>Code IATA</th>
+      <th>Nom</th>
+      <th>Ville</th>
+      <th>Pays</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (a of service.aeroports(); track a.idIata) {
+      <tr>
+        <td>{{ a.idIata }}</td>
+        <td>{{ a.nom }}</td>
+        <td>{{ a.ville }}</td>
+        <td>{{ a.pays }}</td>
+        <td>
+          <a [routerLink]="['/aeroports', a.idIata, 'modifier']">Modifier</a>
+          <button (click)="supprimer(a.idIata)">Supprimer</button>
+        </td>
+      </tr>
+    } @empty {
+      <tr><td colspan="5">Aucun aeroport.</td></tr>
+    }
+  </tbody>
+</table>

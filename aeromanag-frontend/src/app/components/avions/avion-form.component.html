@@ -1,0 +1,17 @@
+<h2>{{ modeEdition ? 'Modifier' : 'Nouvel' }} avion</h2>
+<form [formGroup]="form" (ngSubmit)="enregistrer()">
+  <div>
+    <label>Modele</label>
+    <input formControlName="modele" />
+  </div>
+  <div>
+    <label>Capacite</label>
+    <input formControlName="capacite" type="number" />
+  </div>
+  <div>
+    <label>Statut</label>
+    <input formControlName="statut" />
+  </div>
+  <button type="submit">Enregistrer</button>
+  <button type="button" (click)="annuler()">Annuler</button>
+</form>

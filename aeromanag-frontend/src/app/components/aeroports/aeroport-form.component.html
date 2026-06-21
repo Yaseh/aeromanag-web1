@@ -1,0 +1,21 @@
+<h2>{{ modeEdition ? 'Modifier' : 'Nouvel' }} aeroport</h2>
+<form [formGroup]="form" (ngSubmit)="enregistrer()">
+  <div>
+    <label>Code IATA</label>
+    <input formControlName="idIata" />
+  </div>
+  <div>
+    <label>Nom</label>
+    <input formControlName="nom" />
+  </div>
+  <div>
+    <label>Ville</label>
+    <input formControlName="ville" />
+  </div>
+  <div>
+    <label>Pays</label>
+    <input formControlName="pays" />
+  </div>
+  <button type="submit">Enregistrer</button>
+  <button type="button" (click)="annuler()">Annuler</button>
+</form>

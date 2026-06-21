@@ -1,0 +1,17 @@
+<h2>{{ modeEdition ? 'Modifier' : 'Nouveau' }} personnel</h2>
+<form [formGroup]="form" (ngSubmit)="enregistrer()">
+  <div>
+    <label>Nom</label>
+    <input formControlName="nom" />
+  </div>
+  <div>
+    <label>Prenom</label>
+    <input formControlName="prenom" />
+  </div>
+  <div>
+    <label>Role</label>
+    <input formControlName="role" />
+  </div>
+  <button type="submit">Enregistrer</button>
+  <button type="button" (click)="annuler()">Annuler</button>
+</form>

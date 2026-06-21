@@ -1,0 +1,58 @@
+<h2>{{ modeEdition ? 'Modifier' : 'Nouveau' }} vol</h2>
+<form [formGroup]="form" (ngSubmit)="enregistrer()">
+  <div>
+    <label>Numero de vol</label>
+    <input formControlName="numeroVol" />
+  </div>
+  <div>
+    <label>Date depart</label>
+    <input formControlName="dateDepart" type="datetime-local" />
+  </div>
+  <div>
+    <label>Date arrivee</label>
+    <input formControlName="dateArrivee" type="datetime-local" />
+  </div>
+  <div>
+    <label>Statut</label>
+    <select formControlName="statut">
+      <option value="Prevu">Prevu</option>
+      <option value="En cours">En cours</option>
+      <option value="Arrive">Arrive</option>
+      <option value="Annule">Annule</option>
+    </select>
+  </div>
+  <div>
+    <label>Aeroport de depart</label>
+    <select formControlName="aeroportDepart">
+      @for (a of aeroportService.aeroports(); track a.idIata) {
+        <option [value]="a.idIata">{{ a.idIata }} - {{ a.nom }}</option>
+      }
+    </select>
+  </div>
+  <div>
+    <label>Aeroport d'arrivee</label>
+    <select formControlName="aeroportArrivee">
+      @for (a of aeroportService.aeroports(); track a.idIata) {
+        <option [value]="a.idIata">{{ a.idIata }} - {{ a.nom }}</option>
+      }
+    </select>
+  </div>
+  <div>
+    <label>Avion</label>
+    <select formControlName="idAvion">
+      @for (av of avionService.avions(); track av.idAvion) {
+        <option [value]="av.idAvion">{{ av.modele }}</option>
+      }
+    </select>
+  </div>
+  <div>
+    <label>Commandant</label>
+    <select formControlName="idCommandant">
+      @for (p of personnelService.personnels(); track p.idPersonnel) {
+        <option [value]="p.idPersonnel">{{ p.nom }} {{ p.prenom }}</option>
+      }
+    </select>
+  </div>
+  <button type="submit">Enregistrer</button>
+  <button type="button" (click)="annuler()">Annuler</button>
+</form>

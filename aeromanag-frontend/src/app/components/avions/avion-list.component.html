@@ -1,0 +1,29 @@
+<h2>Avions</h2>
+<a routerLink="/avions/nouveau">+ Nouvel avion</a>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Modele</th>
+      <th>Capacite</th>
+      <th>Statut</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (a of service.avions(); track a.idAvion) {
+      <tr>
+        <td>{{ a.idAvion }}</td>
+        <td>{{ a.modele }}</td>
+        <td>{{ a.capacite }}</td>
+        <td>{{ a.statut }}</td>
+        <td>
+          <a [routerLink]="['/avions', a.idAvion, 'modifier']">Modifier</a>
+          <button (click)="supprimer(a.idAvion)">Supprimer</button>
+        </td>
+      </tr>
+    } @empty {
+      <tr><td colspan="5">Aucun avion.</td></tr>
+    }
+  </tbody>
+</table>

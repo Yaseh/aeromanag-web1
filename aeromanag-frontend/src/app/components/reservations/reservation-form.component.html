@@ -1,0 +1,30 @@
+<h2>Nouvelle reservation</h2>
+
+@if (messageErreur) {
+  <p class="erreur">{{ messageErreur }}</p>
+}
+
+<form [formGroup]="form" (ngSubmit)="enregistrer()">
+  <div>
+    <label>Numero de siege</label>
+    <input formControlName="numeroSiege" />
+  </div>
+  <div>
+    <label>Vol</label>
+    <select formControlName="idVol">
+      @for (v of volService.vols(); track v.idVol) {
+        <option [value]="v.idVol">{{ v.numeroVol }} ({{ v.aeroportDepartCode }} → {{ v.aeroportArriveeCode }})</option>
+      }
+    </select>
+  </div>
+  <div>
+    <label>Passager</label>
+    <select formControlName="idPassager">
+      @for (p of passagerService.passagers(); track p.idPassager) {
+        <option [value]="p.idPassager">{{ p.nom }} {{ p.prenom }}</option>
+      }
+    </select>
+  </div>
+  <button type="submit">Enregistrer</button>
+  <button type="button" (click)="annuler()">Annuler</button>
+</form>

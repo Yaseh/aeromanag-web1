@@ -1,0 +1,28 @@
+<h2>Reservations</h2>
+<a routerLink="/reservations/nouveau">+ Nouvelle reservation</a>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Siege</th>
+      <th>Vol</th>
+      <th>Passager</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (r of service.reservations(); track r.idReservation) {
+      <tr>
+        <td>{{ r.idReservation }}</td>
+        <td>{{ r.numeroSiege }}</td>
+        <td>{{ r.numeroVol }}</td>
+        <td>{{ r.passagerNom }} {{ r.passagerPrenom }}</td>
+        <td>
+          <button (click)="supprimer(r.idReservation)">Supprimer</button>
+        </td>
+      </tr>
+    } @empty {
+      <tr><td colspan="5">Aucune reservation.</td></tr>
+    }
+  </tbody>
+</table>
